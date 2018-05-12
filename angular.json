@@ -26,6 +26,7 @@
               "src/styles.css",
               "node_modules/datatables.net-dt/css/jquery.dataTables.css",
               "node_modules/datatables.net-buttons-dt/css/buttons.dataTables.css",
+              "node_modules/datatables.net-responsive-dt/css/responsive.dataTables.css",
               "node_modules/font-awesome/css/font-awesome.min.css",
               "node_modules/primeng/resources/themes/omega/theme.css",
               "node_modules/primeng/resources/primeng.min.css"
@@ -34,6 +35,7 @@
               "node_modules/jquery/dist/jquery.js",
               "node_modules/datatables.net/js/jquery.dataTables.js",
               "node_modules/datatables.net-buttons/js/dataTables.buttons.js",
+              "node_modules/datatables.net-responsive/js/dataTables.responsive.js",
               "node_modules/datatables.net-buttons/js/buttons.colVis.js",
               "node_modules/datatables.net-buttons/js/buttons.flash.js",
               "node_modules/datatables.net-buttons/js/buttons.html5.js",

@@ -40,7 +40,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
 
         {
           data: 'name',
-          title: 'Name'
+          title: 'Name',
         },
         {
           data: 'status',
@@ -52,7 +52,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
         },
         {
           data: 'description',
-          title: 'Description'
+          title: 'Description',
         },
         {
           data: 'color',
@@ -87,6 +87,11 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
           this.gotoPrinterView(this.printers[index].id);
         });
         return row;
+      },
+      responsive: {
+        details: {
+          type: 'column'
+        }
       }
     };
   }
