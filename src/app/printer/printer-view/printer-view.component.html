@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="ui-grid-col-4">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['name'].valid&&formGroup.controls['name'].dirty">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['name'].valid&&(formGroup.controls['name'].dirty || formGroup.controls['name'].touched)">
             <i class="fa fa-close"></i>
             Name is required
           </div>
@@ -38,7 +38,7 @@
           <p-dropdown [options]="STATUSES" formControlName="status" [filter]="true"></p-dropdown>
         </div>
         <div class="ui-grid-col-4">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['status'].valid&&formGroup.controls['status'].dirty">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['status'].valid&&(formGroup.controls['status'].dirty || formGroup.controls['status'].touched)">
             <i class="fa fa-close"></i>
             Status is required
           </div>
@@ -58,7 +58,7 @@
           </div>
         </div>
         <div class="ui-grid-col-4">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['ipAddress'].valid&&formGroup.controls['ipAddress'].dirty">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['ipAddress'].valid&&(formGroup.controls['ipAddress'].dirty || formGroup.controls['ipAddress'].touched)">
             <i class="fa fa-close"></i>
             Network Address is required
           </div>
@@ -78,7 +78,7 @@
           </div>
         </div>
         <div class="ui-grid-col-4">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['description'].valid&&formGroup.controls['description'].dirty">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['description'].valid&&(formGroup.controls['description'].dirty || formGroup.controls['description'].touched)">
             <i class="fa fa-close"></i>
             Description is required
           </div>
@@ -98,7 +98,7 @@
           </div>
         </div>
         <div class="ui-grid-col-4">
-          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['color'].valid&&formGroup.controls['color'].dirty">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['color'].valid&&(formGroup.controls['description'].dirty || formGroup.controls['description'].touched)">
             <i class="fa fa-close"></i>
             Color is required
           </div>

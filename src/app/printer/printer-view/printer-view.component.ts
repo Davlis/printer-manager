@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
+import { touchAll } from '../../+core/helpers/forms.helper';
 import { PrinterService } from '../../+core/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -56,6 +57,8 @@ export class PrinterViewComponent implements OnInit {
   }
 
   private submit() {
+    touchAll(this.formGroup);
+
     if (this.formGroup.valid) {
       if (this.editMode) {
         this.printerService.update(this.id, this.formGroup.value);
