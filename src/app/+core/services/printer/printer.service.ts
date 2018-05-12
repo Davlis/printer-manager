@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 
 import { LocalStorage } from 'ngx-webstorage';
-import { Printer } from '../../../../models/Printer';
+import { Printer } from '../../../../models';
 
 declare var $;
 

@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 
-import { Printer } from '../../models/Printer';
-import { PrinterService } from '../+core/services/printer/printer.service';
+import { Printer } from '../../models';
+import { PrinterService } from '../+core/services';
 
 declare var $;
 
