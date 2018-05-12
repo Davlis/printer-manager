@@ -3,6 +3,7 @@ import { Http, Response } from '@angular/http';
 
 import { LocalStorage } from 'ngx-webstorage';
 import { Printer } from '../../models';
+import { print } from 'util';
 
 declare var $;
 
@@ -14,6 +15,8 @@ export class PrinterService {
   printers: Printer[];
 
   constructor(private http: Http) {
+    console.log('how many');
+
     if (!this.printers) {
       this.printers = [];
     }
@@ -24,7 +27,9 @@ export class PrinterService {
   }
 
   public add(data) {
-    return;
+    const printer = new Printer(data);
+    this.printers = [...this.printers].concat(printer);
+    return printer;
   }
 
   public update(id, data) {

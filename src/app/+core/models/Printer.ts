@@ -5,10 +5,11 @@ export class Printer {
     name: string;
     status: string;
     ipAddress: string;
-    Description: string;
-    Color: string;
+    description: string;
+    color: string;
 
-    constructor() {
+    constructor(init?: Partial<Printer>) {
+        Object.assign(this, init);
         this.id = uuidv4();
     }
 }
