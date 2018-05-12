@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { touchAll } from '../../+core/helpers/forms.helper';
+import { touchAll, populateForm } from '../../+core/helpers/forms.helper';
 import { PrinterService } from '../../+core/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
@@ -34,7 +34,7 @@ export class PrinterViewComponent implements OnInit {
       this.editMode = true;
       this.id = this.route.snapshot.params.id;
       const printer = this.printerService.retrievePrinter(this.id);
-      this.populateForm(printer);
+      populateForm(this.formGroup, printer, ['id']);
     }
   }
 
@@ -46,14 +46,6 @@ export class PrinterViewComponent implements OnInit {
       color: ['', Validators.required],
       description: '',
     });
-  }
-
-  private populateForm(data): void {
-    this.formGroup.get('name').setValue(data.name);
-    this.formGroup.get('status').setValue(data.status);
-    this.formGroup.get('ipAddress').setValue(data.ipAddress);
-    this.formGroup.get('color').setValue(data.color);
-    this.formGroup.get('description').setValue(data.description);
   }
 
   private submit() {

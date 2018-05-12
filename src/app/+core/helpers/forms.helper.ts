@@ -4,7 +4,8 @@ import {
 } from '@angular/forms';
 
 export {
-  touchAll
+  touchAll,
+  populateForm
 };
 
 function touchAll(formGroup: FormGroup | FormArray, func = 'markAsTouched', opts = { onlySelf: false }) {
@@ -14,6 +15,14 @@ function touchAll(formGroup: FormGroup | FormArray, func = 'markAsTouched', opts
       touchAll(_c);
     } else {
       _c[func](opts);
+    }
+  }
+}
+
+function populateForm(formGroup: FormGroup, values: any, exclude?: Array<string>): void {
+  for (const control of Object.keys(formGroup.controls)) {
+    if (!exclude.includes(control)) {
+      formGroup.get(control).setValue(values[control]);
     }
   }
 }
