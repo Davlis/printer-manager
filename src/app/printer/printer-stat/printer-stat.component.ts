@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-printer-stat',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PrinterStatComponent implements OnInit {
 
-  constructor() { }
+  constructor(private elementRef: ElementRef) { }
 
   ngOnInit() {
   }
