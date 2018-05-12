@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Printer } from '../../../models';
+import { Printer } from '../../+core/models';
 import { PrinterService } from '../../+core/services';
 
 declare var $;
@@ -95,7 +95,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     this.router.navigate(['./', 'new'], { relativeTo: this.route });
   }
 
-  private gotoPrinterView(id: number) {
+  private gotoPrinterView(id: string) {
     this.router.navigate(['./', `${id}`], { relativeTo: this.route });
   }
 
