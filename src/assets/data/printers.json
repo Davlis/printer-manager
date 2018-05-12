@@ -1,0 +1,15 @@
+[{
+    "id": 1,
+    "name": "Printer #1",
+    "status": "Working",
+    "ipAddress": "192.168.0.13",
+    "description": "First printer",
+    "color": "Red"
+}, {
+    "id": 2,
+    "name": "Printer #2",
+    "status": "Working",
+    "ipAddress": "192.168.0.1",
+    "description": "Second printer",
+    "color": "Blue"
+}]
