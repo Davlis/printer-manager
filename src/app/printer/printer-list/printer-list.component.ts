@@ -32,6 +32,8 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     this.printers = this.printerService.getPrintersRef();
     this.addDataToRowsAndRedraw(this.printers);
+    this.registerOnSelect();
+    this.registerOnDeselect();
   }
 
   private initializeDatatable() {
@@ -101,21 +103,6 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
         'copy',
         'print'
       ],
-      rowCallback: (row: Node, data: any[] | Object, index: number) => {
-        // Unbind first in order to avoid any duplicate handler
-        // (see https://github.com/l-lin/angular-datatables/issues/87)
-          $('td', row).unbind('click');
-          $('td', row).bind('click', () => {
-            setTimeout(() => {
-              if ($(row).hasClass('selected')) {
-                this.selected = this.printers[index];
-              } else {
-                this.selected = null;
-              }
-            });
-          });
-        return row;
-      },
       select: true
     };
   }
@@ -136,14 +123,14 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private deletePrinter() {
+  private async deletePrinter() {
     if (this.selected) {
       this.printerService.remove(this.selected.id);
-      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-        dtInstance.row('.selected').remove();
-        dtInstance.draw();
-        this.selected = null;
-      });
+
+      const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
+      dtInstance.row('.selected').remove();
+      dtInstance.draw();
+      this.selected = null;
     }
   }
 
@@ -155,9 +142,20 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private addDataToRowsAndRedraw(data): void {
-    this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
-      dtInstance.clear().rows.add(data).draw();
+  private async addDataToRowsAndRedraw(data) {
+    const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
+    dtInstance.clear().rows.add(data).draw();
+  }
+
+  private async registerOnSelect() {
+    const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
+    dtInstance.on('select', (...args) => {
+      this.selected = this.printers[args[3]];
     });
+  }
+
+  private async registerOnDeselect() {
+    const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
+    dtInstance.on('deselect', () => this.selected = null);
   }
 }
