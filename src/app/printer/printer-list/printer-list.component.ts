@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { Printer } from '../../../models';
 import { PrinterService } from '../../+core/services';
@@ -18,7 +19,9 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
 
   dtOptions: any = {};
 
-  constructor(private printerService: PrinterService) { }
+  constructor(private printerService: PrinterService,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.initializeDatatable();
@@ -89,11 +92,11 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   }
 
   private gotoPrinterCreate() {
-    return;
+    this.router.navigate(['./', 'new'], { relativeTo: this.route });
   }
 
   private gotoPrinterView(id: number) {
-    return;
+    this.router.navigate(['./', `${id}`], { relativeTo: this.route });
   }
 
   private async import() {
