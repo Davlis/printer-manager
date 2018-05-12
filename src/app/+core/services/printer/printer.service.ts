@@ -15,8 +15,6 @@ export class PrinterService {
   printers: Printer[];
 
   constructor(private http: Http) {
-    console.log('how many');
-
     if (!this.printers) {
       this.printers = [];
     }
@@ -26,6 +24,14 @@ export class PrinterService {
     return this.printers;
   }
 
+  public retrievePrinter(id: string) {
+    const printer = this.printers.filter(p => p.id === id)[0];
+    if (!printer) {
+      throw new Error('Error with fetching printer');
+    }
+    return printer;
+  }
+
   public add(data) {
     const printer = new Printer(data);
     this.printers = [...this.printers].concat(printer);
@@ -33,15 +39,21 @@ export class PrinterService {
   }
 
   public update(id, data) {
-    return;
+    const printer = new Printer(data);
+    printer.id = id;
+    this.printers = this.printers.filter(p => p.id !== id);
+    this.printers = [...this.printers].concat(printer);
+    return printer;
   }
 
   public remove(id) {
+    this.printers = this.printers.filter(p => p.id !== id);
     return;
   }
 
   public async import(path) {
     const data = await this.load(path);
+    this.printers = [].concat(data);
     return  data;
   }
 

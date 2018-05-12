@@ -11,6 +11,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 })
 export class PrinterViewComponent implements OnInit {
 
+  editMode = false;
+  id: string;
+
   formGroup: FormGroup;
 
   STATUSES: Array<any> = [
@@ -26,10 +29,12 @@ export class PrinterViewComponent implements OnInit {
 
   ngOnInit() {
     this.formInit();
-  }
-
-  private back(): void {
-    this.router.navigate(['../'], { relativeTo: this.route });
+    if (this.route.snapshot.params.id !== 'new') {
+      this.editMode = true;
+      this.id = this.route.snapshot.params.id;
+      const printer = this.printerService.retrievePrinter(this.id);
+      this.populateForm(printer);
+    }
   }
 
   private formInit(): void {
@@ -42,10 +47,26 @@ export class PrinterViewComponent implements OnInit {
     });
   }
 
+  private populateForm(data): void {
+    this.formGroup.get('name').setValue(data.name);
+    this.formGroup.get('status').setValue(data.status);
+    this.formGroup.get('ipAddress').setValue(data.ipAddress);
+    this.formGroup.get('color').setValue(data.color);
+    this.formGroup.get('description').setValue(data.description);
+  }
+
   private submit() {
     if (this.formGroup.valid) {
-      this.printerService.add(this.formGroup.value);
+      if (this.editMode) {
+        this.printerService.update(this.id, this.formGroup.value);
+      } else {
+        this.printerService.add(this.formGroup.value);
+      }
       this.back();
     }
+  }
+
+  private back(): void {
+    this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
