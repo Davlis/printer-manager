@@ -1,24 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule, Routes } from '@angular/router';
 import { HttpModule } from '@angular/http';
-import { DataTablesModule } from 'angular-datatables';
-import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { AppComponent } from './app.component';
-import { PrinterListComponent } from './printer-list/printer-list.component';
-import { PrinterViewComponent } from './printer-view/printer-view.component';
+import { appRoutes } from './app.routing';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    PrinterListComponent,
-    PrinterViewComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpModule,
-    DataTablesModule,
-    Ng2Webstorage,
+    RouterModule.forRoot(appRoutes),
   ],
   providers: [],
   bootstrap: [AppComponent]

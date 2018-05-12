@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PrinterService } from '../+core/services';
+import { PrinterService } from '../../+core/services';
 
 @Component({
   selector: 'app-printer-view',
