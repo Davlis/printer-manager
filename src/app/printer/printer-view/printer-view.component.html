@@ -35,7 +35,7 @@
           Status *:
         </div>
         <div class="ui-grid-col-6">
-          <p-dropdown [options]="STATUSES" formControlName="status" [filter]="true"></p-dropdown>
+          <p-dropdown [options]="STATUSES" formControlName="status" [filter]="true" [autoWidth]="false"></p-dropdown>
         </div>
         <div class="ui-grid-col-4">
           <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['status'].valid&&(formGroup.controls['status'].dirty || formGroup.controls['status'].touched)">
