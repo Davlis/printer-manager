@@ -19,3 +19,14 @@ h3 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     padding: 10px;
 }
+
+.footer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 66.66%;
+}
+
+.flextable-1 {
+    flex: 1;
+}

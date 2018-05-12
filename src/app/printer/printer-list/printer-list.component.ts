@@ -19,6 +19,8 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
 
   dtOptions: any = {};
 
+  selected: Printer;
+
   constructor(private printerService: PrinterService,
     private router: Router,
     private route: ActivatedRoute) { }
@@ -37,10 +39,15 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
       pagingType: 'full_numbers',
       pageLength: 10,
       columns: [
-
+        {
+          data: 'id',
+          visible: false,
+          orderable: false
+        },
         {
           data: 'name',
           title: 'Name',
+          width: '20%',
         },
         {
           data: 'status',
@@ -62,37 +69,54 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
       dom: 'Bfrtip',
       buttons: [
         {
-          text: 'Add printer',
+          text: 'Add',
           key: '1',
           action: (e, dt, node, config) => this.gotoPrinterCreate()
         },
         {
-          text: 'Import printers',
+          text: 'Edit',
           key: '2',
+          action: (e, dt, node, config) => this.gotoPrinterUpdate()
+        },
+        {
+          text: 'Delete',
+          key: '3',
+          action: (e, dt, node, config) => this.deletePrinter()
+        },
+        {
+          text: 'Stats',
+          key: '4',
+          action: (e, dt, node, config) => this.gotoPrinterUpdate()
+        },
+        {
+          text: 'Import',
+          key: '5',
           action: (e, dt, node, config) => this.import()
         },
         {
-          text: 'Export printers',
+          text: 'Export',
+          key: '6',
           action: (e, dt, button, config) => this.printerService.export(this.printers)
         },
         'copy',
         'print'
       ],
       rowCallback: (row: Node, data: any[] | Object, index: number) => {
-        const self = this;
         // Unbind first in order to avoid any duplicate handler
         // (see https://github.com/l-lin/angular-datatables/issues/87)
-        $('td', row).unbind('click');
-        $('td', row).bind('click', () => {
-          this.gotoPrinterView(this.printers[index].id);
-        });
+          $('td', row).unbind('click');
+          $('td', row).bind('click', () => {
+            setTimeout(() => {
+              if ($(row).hasClass('selected')) {
+                this.selected = this.printers[index];
+              } else {
+                this.selected = null;
+              }
+            });
+          });
         return row;
       },
-      responsive: {
-        details: {
-          type: 'column'
-        }
-      }
+      select: true
     };
   }
 
@@ -100,8 +124,21 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     this.router.navigate(['./', 'new'], { relativeTo: this.route });
   }
 
-  private gotoPrinterView(id: string) {
-    this.router.navigate(['./', `${id}`], { relativeTo: this.route });
+  private gotoPrinterUpdate() {
+    if (this.selected) {
+      this.router.navigate(['./', `${this.selected.id}`], { relativeTo: this.route });
+    }
+  }
+
+  private deletePrinter() {
+    if (this.selected) {
+      this.printerService.remove(this.selected.id);
+      this.dtElement.dtInstance.then((dtInstance: DataTables.Api) => {
+        dtInstance.row('.selected').remove();
+        dtInstance.draw();
+        this.selected = null;
+      });
+    }
   }
 
   private async import() {
