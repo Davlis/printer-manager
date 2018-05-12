@@ -1,6 +1,11 @@
 <div class="content">
   <h3 class="first">
-    Add printer
+    <ng-container *ngIf="editMode">
+      Edit printer
+    </ng-container>
+    <ng-container *ngIf="!editMode">
+      Add printer
+    </ng-container>
   </h3>
 
   <form [formGroup]="formGroup" (ngSubmit)="submit()">
@@ -69,7 +74,7 @@
             <span class="ui-inputgroup-addon">
               <i class="fa fa-user"></i>
             </span>
-            <input pInputText type="text" formControlName="description" placeholder="Description" />
+            <textarea pInputTextarea formControlName="description" placeholder="Description"></textarea>
           </div>
         </div>
         <div class="ui-grid-col-4">
