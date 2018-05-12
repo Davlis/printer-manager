@@ -86,7 +86,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
         {
           text: 'Stats',
           key: '4',
-          action: (e, dt, node, config) => this.gotoPrinterUpdate()
+          action: (e, dt, node, config) => this.gotoPrinterStats()
         },
         {
           text: 'Import',
@@ -127,6 +127,12 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   private gotoPrinterUpdate() {
     if (this.selected) {
       this.router.navigate(['./', `${this.selected.id}`], { relativeTo: this.route });
+    }
+  }
+
+  private gotoPrinterStats() {
+    if (this.selected) {
+      this.router.navigate(['./', `${this.selected.id}`, 'stats'], { relativeTo: this.route });
     }
   }
 

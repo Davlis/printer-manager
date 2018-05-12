@@ -8,6 +8,7 @@ import { printerRoutes } from './printer.routing';
 
 import { PrinterListComponent } from './printer-list/printer-list.component';
 import { PrinterViewComponent } from './printer-view/printer-view.component';
+import { PrinterStatComponent } from './printer-stat/printer-stat.component';
 
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
@@ -30,7 +31,8 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
     ],
     declarations: [
         PrinterListComponent,
-        PrinterViewComponent
+        PrinterViewComponent,
+        PrinterStatComponent,
     ]
 })
 export class PrinterModule { }
