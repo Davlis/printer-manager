@@ -2,6 +2,10 @@
     background: red;
 }
 
+.grey {
+    background: grey;
+}
+
 .last {
     padding-top: 20px;
 }

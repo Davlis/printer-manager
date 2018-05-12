@@ -109,8 +109,11 @@
         <div class="ui-grid-col">
           <button class="cool-btn" (click)="submit()">Submit</button>
         </div>
+        <div class="ui-grid-col" *ngIf="editMode">
+          <button class="cool-btn red" (click)="delete()">Delete</button>
+        </div>
         <div class="ui-grid-col">
-          <button class="cool-btn red" (click)="back()">Cancel</button>
+          <button class="cool-btn grey" (click)="back()">Cancel</button>
         </div>
       </div>
 

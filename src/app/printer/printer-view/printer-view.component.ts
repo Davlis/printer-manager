@@ -61,6 +61,11 @@ export class PrinterViewComponent implements OnInit {
     }
   }
 
+  private delete() {
+    this.printerService.remove(this.id);
+    this.back();
+  }
+
   private back(): void {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
