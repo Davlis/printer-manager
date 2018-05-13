@@ -48,7 +48,7 @@ export class PrinterViewComponent implements OnInit {
     });
   }
 
-  private submit() {
+  submit() {
     touchAll(this.formGroup);
 
     if (this.formGroup.valid) {
@@ -61,7 +61,7 @@ export class PrinterViewComponent implements OnInit {
     }
   }
 
-  private back(): void {
+  back(): void {
     this.router.navigate(['../'], { relativeTo: this.route });
   }
 }
