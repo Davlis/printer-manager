@@ -2,10 +2,8 @@ import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Router, ActivatedRoute } from '@angular/router';
 
-import { Printer } from '../../+core/models';
-import { PrinterService } from '../../+core/services';
-
-import { readJSON, extractFileFromDOMEvent } from '../../+core/helpers/files';
+import { Printer, PrinterService } from '../../+core';
+import { readJSON, extractFileFromDOMEvent } from '../../+core/helpers';
 
 declare var $;
 
@@ -38,7 +36,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     this.registerOnDeselect();
   }
 
-  private initializeDatatable() {
+  private initializeDatatable(): void {
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 10,
@@ -112,17 +110,17 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     };
   }
 
-  private gotoPrinterCreate() {
+  private gotoPrinterCreate(): void {
     this.router.navigate(['./', 'new'], { relativeTo: this.route });
   }
 
-  private gotoPrinterUpdate() {
+  private gotoPrinterUpdate(): void {
     if (this.selected) {
       this.router.navigate(['./', `${this.selected.id}`], { relativeTo: this.route });
     }
   }
 
-  private gotoPrinterStats() {
+  private gotoPrinterStats(): void {
     if (this.selected) {
       this.router.navigate(['./', `${this.selected.id}`, 'stats'], { relativeTo: this.route });
     }

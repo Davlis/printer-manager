@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-
-import { touchAll, populateForm } from '../../+core/helpers/forms.helper';
-import { PrinterService } from '../../+core/services';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+import { PrinterService } from '../../+core';
+import { touchAll, populateForm } from '../../+core/helpers';
 
 @Component({
   selector: 'app-printer-view',
@@ -31,7 +31,7 @@ export class PrinterViewComponent implements OnInit {
   ngOnInit() {
     this.buildForm();
 
-    if (this.isEditMode()) {
+    if (this.doesRouteParamsMeetsEditConstraints()) {
       this.initEditMode();
     }
   }
@@ -46,7 +46,7 @@ export class PrinterViewComponent implements OnInit {
     });
   }
 
-  private isEditMode() {
+  private doesRouteParamsMeetsEditConstraints(): boolean {
     const { id } = this.route.snapshot.params;
     if (id && id !== 'new') {
       return true;
@@ -54,14 +54,14 @@ export class PrinterViewComponent implements OnInit {
     return false;
   }
 
-  private initEditMode() {
+  private initEditMode(): void {
     this.editMode = true;
     this.id = this.route.snapshot.params.id;
     const printer = this.printerService.retrievePrinter(this.id);
     populateForm(this.formGroup, printer, ['id']);
   }
 
-  submit() {
+  submit(): void {
     touchAll(this.formGroup);
 
     if (this.formGroup.valid) {

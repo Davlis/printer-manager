@@ -1,8 +1,5 @@
 import { Routes } from '@angular/router';
-
-import { PrinterListComponent } from './printer-list/printer-list.component';
-import { PrinterViewComponent } from './printer-view/printer-view.component';
-import { PrinterStatComponent } from './printer-stat/printer-stat.component';
+import { PrinterListComponent, PrinterViewComponent, PrinterStatComponent } from './index';
 
 export const printerRoutes: Routes = [
     {
