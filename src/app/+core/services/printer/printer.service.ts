@@ -51,10 +51,9 @@ export class PrinterService {
     return;
   }
 
-  public async import(path) {
-    const data = await this.load(path);
+  public async import(data) {
     this.printers = [].concat(data);
-    return  data;
+    return this.printers;
   }
 
   public export(data: Array<Printer>, filename: string = 'Export.json') {
@@ -62,19 +61,5 @@ export class PrinterService {
       new Blob([JSON.stringify(data)]),
       filename
     );
-  }
-
-  private async load(url: string) {
-    const data = await this.http.get(url)
-      .toPromise()
-      .then((response) => {
-        return this.extractData(response);
-      });
-    return data;
-  }
-
-  private extractData(res: Response) {
-    const body = res.json();
-    return body;
   }
 }

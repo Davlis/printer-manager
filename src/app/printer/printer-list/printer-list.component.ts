@@ -5,6 +5,8 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { Printer } from '../../+core/models';
 import { PrinterService } from '../../+core/services';
 
+import { readJSON, extractFileFromDOMEvent } from '../../+core/helpers/files';
+
 declare var $;
 
 @Component({
@@ -91,9 +93,12 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
           action: (e, dt, node, config) => this.gotoPrinterStats()
         },
         {
-          text: 'Import',
-          key: '5',
-          action: (e, dt, node, config) => this.import()
+          text: '<i class="fa fa-upload"></i> Import',
+          action: () => {
+            const fileSelector = $('<input type="file" name="import"/>');
+            $(fileSelector).on('change', this.import.bind(this));
+            fileSelector.click();
+          }
         },
         {
           text: 'Export',
@@ -134,12 +139,11 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
     }
   }
 
-  private async import() {
-    const path = prompt('Please enter path');
-    if (path) {
-      this.printers = await this.printerService.import(path);
-      this.addDataToRowsAndRedraw(this.printers);
-    }
+  private async import($event) {
+    const file = extractFileFromDOMEvent($event);
+    const data = await readJSON(file);
+    this.printers = await this.printerService.import(data);
+    this.addDataToRowsAndRedraw(this.printers);
   }
 
   private async addDataToRowsAndRedraw(data) {
