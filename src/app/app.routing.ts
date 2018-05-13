@@ -8,6 +8,6 @@ export const appRoutes: Routes = [
     {
         path: '',
         pathMatch: 'full',
-        redirectTo: 'printer'
+        redirectTo: '/printer'
     }
 ];
