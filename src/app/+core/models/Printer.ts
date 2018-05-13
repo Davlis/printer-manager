@@ -1,4 +1,4 @@
-import uuidv4 from 'uuidv4';
+import { UUID } from 'angular2-uuid';
 
 export class Printer {
     id: string;
@@ -10,6 +10,6 @@ export class Printer {
 
     constructor(init?: Partial<Printer>) {
         Object.assign(this, init);
-        this.id = uuidv4();
+        this.id = UUID.UUID();
     }
 }
