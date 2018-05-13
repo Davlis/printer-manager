@@ -15,13 +15,13 @@ describe('PrinterService', () => {
 
   it('should add new printer to printers array', inject([PrinterService], (service: PrinterService) => {
     const currentLength = service.getPrintersRef().length;
-    service.add(Object.assign({}, {
+    service.add({
       name: 'Prrinter',
       status: 'Offline',
       ipAddress: '192.168.0.13',
       description: 'My new printer',
       color: 'Red'
-    }));
+    });
     const afterAddLength = service.getPrintersRef().length;
     expect(afterAddLength).toEqual(currentLength + 1);
   }));

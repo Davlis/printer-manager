@@ -29,19 +29,14 @@ export class PrinterViewComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.formInit();
+    this.buildForm();
 
-    console.log(this.route.snapshot.params);
-
-    if (this.route.snapshot.params.id !== 'new') {
-      this.editMode = true;
-      this.id = this.route.snapshot.params.id;
-      const printer = this.printerService.retrievePrinter(this.id);
-      populateForm(this.formGroup, printer, ['id']);
+    if (this.isEditMode()) {
+      this.initEditMode();
     }
   }
 
-  private formInit(): void {
+  private buildForm(): void {
     this.formGroup = this.fb.group({
       name: ['', Validators.required],
       status: [null, Validators.required],
@@ -49,6 +44,21 @@ export class PrinterViewComponent implements OnInit {
       color: ['', Validators.required],
       description: '',
     });
+  }
+
+  private isEditMode() {
+    const { id } = this.route.snapshot.params;
+    if (id && id !== 'new') {
+      return true;
+    }
+    return false;
+  }
+
+  private initEditMode() {
+    this.editMode = true;
+    this.id = this.route.snapshot.params.id;
+    const printer = this.printerService.retrievePrinter(this.id);
+    populateForm(this.formGroup, printer, ['id']);
   }
 
   submit() {
