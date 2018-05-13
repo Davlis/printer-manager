@@ -10,14 +10,11 @@
         "/printer-manager/0.e5c23052fcef89e66bdc.js",
         "/printer-manager/favicon.ico",
         "/printer-manager/index.html",
-        "/printer-manager/main.d1bdb646b1a4c74638e4.js",
-        "/printer-manager/ngsw-worker.js",
+        "/printer-manager/main.af938db367d455d80503.js",
         "/printer-manager/polyfills.ccf27a86274c45148758.js",
         "/printer-manager/runtime.9a7b598e8e9971876a35.js",
-        "/printer-manager/safety-worker.js",
         "/printer-manager/scripts.9295ae7b359fcdcf683c.js",
-        "/printer-manager/styles.b73cd76d9070acc117dc.css",
-        "/printer-manager/worker-basic.min.js"
+        "/printer-manager/styles.b73cd76d9070acc117dc.css"
       ],
       "patterns": []
     },
@@ -52,15 +49,12 @@
     "/printer-manager/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/printer-manager/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/printer-manager/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/printer-manager/index.html": "bc0f84938e927a01eb82349a6b174dee60f70f46",
-    "/printer-manager/main.d1bdb646b1a4c74638e4.js": "fa879f9d9adf92711db49331749e44e0788a6764",
-    "/printer-manager/ngsw-worker.js": "c5a902eadafef027da61d8960343491e15191ab4",
+    "/printer-manager/index.html": "cbe5d317711e2a54ae5d78f2134d7356d6a954b7",
+    "/printer-manager/main.af938db367d455d80503.js": "32aedf15d2d22d9d3b73702b920ff8b15e528ead",
     "/printer-manager/polyfills.ccf27a86274c45148758.js": "9dac770242889d30a7aa9f59d386bc1bc722e585",
     "/printer-manager/runtime.9a7b598e8e9971876a35.js": "7182cf5b3d2eca1394d75e1f413a4c09a1cdf74f",
-    "/printer-manager/safety-worker.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9",
     "/printer-manager/scripts.9295ae7b359fcdcf683c.js": "9a89c8f8ccf4e0405c51e5d708c9bb7b29bb06c3",
-    "/printer-manager/styles.b73cd76d9070acc117dc.css": "29aff58056f67dedf65fe3193a9bb23f1b15ac80",
-    "/printer-manager/worker-basic.min.js": "ae5c8be3955e38edeeec09ed94b63d1e57f003c9"
+    "/printer-manager/styles.b73cd76d9070acc117dc.css": "29aff58056f67dedf65fe3193a9bb23f1b15ac80"
   },
   "navigationUrls": [
     {
