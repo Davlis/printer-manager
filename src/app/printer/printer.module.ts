@@ -10,9 +10,6 @@ import { PrinterListComponent } from './printer-list/printer-list.component';
 import { PrinterViewComponent } from './printer-view/printer-view.component';
 import { PrinterStatComponent } from './printer-stat/printer-stat.component';
 
-import { ButtonModule } from 'primeng/button';
-import { CheckboxModule } from 'primeng/checkbox';
-import { RadioButtonModule } from 'primeng/radiobutton';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 
@@ -22,9 +19,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
         FormsModule,
         ReactiveFormsModule,
         DataTablesModule,
-        ButtonModule,
-        CheckboxModule,
-        RadioButtonModule,
         DropdownModule,
         Ng2Webstorage,
         RouterModule.forChild(printerRoutes),

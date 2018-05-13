@@ -30,6 +30,9 @@ export class PrinterViewComponent implements OnInit {
 
   ngOnInit() {
     this.formInit();
+
+    console.log(this.route.snapshot.params);
+
     if (this.route.snapshot.params.id !== 'new') {
       this.editMode = true;
       this.id = this.route.snapshot.params.id;

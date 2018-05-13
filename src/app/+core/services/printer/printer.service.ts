@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-
 import { LocalStorage } from 'ngx-webstorage';
+
 import { Printer } from '../../models';
 import { print } from 'util';
 
@@ -14,7 +13,7 @@ export class PrinterService {
   @LocalStorage()
   printers: Printer[];
 
-  constructor(private http: Http) {
+  constructor() {
     if (!this.printers) {
       this.printers = [];
     }
