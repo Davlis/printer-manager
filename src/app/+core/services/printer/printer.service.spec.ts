@@ -1,6 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { PrinterService } from './printer.service';
+import { STATUS, Printer } from '../../models';
 
 describe('PrinterService', () => {
   beforeEach(() => {
@@ -15,16 +16,19 @@ describe('PrinterService', () => {
 
   describe('Unit tests', () => {
     it('should add new printer to printers array', inject([PrinterService], (service: PrinterService) => {
-      const currentLength = service.getPrintersRef().length;
-      service.add({
-        name: 'Prrinter',
-        status: 'Offline',
+      service.printers = [];
+      const printer = {
+        name: 'Printerr',
+        status: STATUS.Online,
         ipAddress: '192.168.0.13',
-        description: 'My new printer',
-        color: 'Red'
-      });
-      const afterAddLength = service.getPrintersRef().length;
-      expect(afterAddLength).toEqual(currentLength + 1);
+        color: 'Red',
+        description: 'My description'
+      };
+      service.add(printer);
+      const printerRef = service.getPrintersRef();
+      const printerFromService = printerRef[0];
+      const expression = Printer.eql(printerFromService, printer);
+      expect(expression).toBeTruthy();
     }));
   });
 });

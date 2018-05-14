@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 
-import { PrinterService } from '../../+core';
+import { PrinterService, Printer, STATUS } from '../../+core';
 import { PrinterViewComponent } from './printer-view.component';
 
 
@@ -29,11 +29,15 @@ describe('PrinterViewComponent', () => {
         fixture.detectChanges();
     });
 
+    beforeEach(() => {
+        printerService.printers = [];
+    });
+
     describe('Integration tests', () => {
         it('should add printer to global printers array in Printer service', () => {
             const printer = {
                 name: 'Printerr',
-                status: 'Online',
+                status: STATUS.Online,
                 ipAddress: '192.168.0.13',
                 color: 'Red',
                 description: 'My description'
@@ -41,8 +45,9 @@ describe('PrinterViewComponent', () => {
             component.formGroup.setValue(printer);
             component.submit();
             const printerRef = printerService.getPrintersRef();
-            expect(printerRef.filter(p => p.name === printer.name).length).toBeTruthy();
+            const printerFromService = printerRef[0];
+            const expression = Printer.eql(printerFromService, printer);
+            expect(expression).toBeTruthy();
         });
     });
 });
-
