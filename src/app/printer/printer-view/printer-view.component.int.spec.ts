@@ -8,7 +8,6 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { PrinterService, Printer, STATUS } from '../../+core';
 import { PrinterViewComponent } from './printer-view.component';
 
-
 describe('PrinterViewComponent', () => {
     let component: PrinterViewComponent;
     let fixture: ComponentFixture<PrinterViewComponent>;
@@ -37,7 +36,7 @@ describe('PrinterViewComponent', () => {
         it('should add printer to global printers array in Printer service', () => {
             const printer = {
                 name: 'Printerr',
-                status: STATUS.Online,
+                status: STATUS.ONLINE,
                 ipAddress: '192.168.0.13',
                 color: 'Red',
                 description: 'My description'

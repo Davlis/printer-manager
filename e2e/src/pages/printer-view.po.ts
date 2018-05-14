@@ -5,8 +5,16 @@ export class PrinterViewPage {
         return element.all(by.css('input')).get(0);
     }
 
+    getTypeInput() {
+        return element.all(by.css('p-dropdown')).get(0).click();
+    }
+
+    clickNeedleOpt() {
+        return element(by.cssContainingText('span', 'Needle')).click();
+    }
+
     getStatusInput() {
-        return element(by.css('p-dropdown')).click();
+        return element.all(by.css('p-dropdown')).get(1).click();
     }
 
     clickOnlineOpt() {
@@ -22,7 +30,7 @@ export class PrinterViewPage {
     }
 
     getColorInput() {
-        return element.all(by.css('input')).get(4);
+        return element.all(by.css('input')).get(5);
     }
 
     submitForm() {

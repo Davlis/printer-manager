@@ -19,7 +19,7 @@ describe('PrinterService', () => {
       service.printers = [];
       const printer = {
         name: 'Printerr',
-        status: STATUS.Online,
+        status: STATUS.ONLINE,
         ipAddress: '192.168.0.13',
         color: 'Red',
         description: 'My description'

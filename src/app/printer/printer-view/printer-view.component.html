@@ -32,6 +32,21 @@
 
       <div class="ui-grid-row">
         <div class="ui-grid-col-2">
+          Type *:
+        </div>
+        <div class="ui-grid-col-6">
+          <p-dropdown [options]="TYPES" formControlName="type" [filter]="true" [autoWidth]="false"></p-dropdown>
+        </div>
+        <div class="ui-grid-col-4">
+          <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!formGroup.controls['type'].valid&&(formGroup.controls['type'].dirty || formGroup.controls['type'].touched)">
+            <i class="fa fa-close"></i>
+            Status is required
+          </div>
+        </div>
+      </div>
+
+      <div class="ui-grid-row">
+        <div class="ui-grid-col-2">
           Status *:
         </div>
         <div class="ui-grid-col-6">
@@ -104,6 +119,7 @@
           </div>
         </div>
       </div>
+  
       <div class="ui-g">
         <div class="desktop ui-md-2 ui-lg-2 ui-g-nopad">&nbsp;</div>
         <div class="ui-g-6 ui-md-3 ui-lg-3">

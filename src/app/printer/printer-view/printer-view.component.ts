@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import { PrinterService } from '../../+core';
+import { PrinterService, Printer } from '../../+core';
 import { touchAll, populateForm } from '../../+core/helpers';
 
 @Component({
@@ -19,8 +19,15 @@ export class PrinterViewComponent implements OnInit {
 
   STATUSES: Array<any> = [
     { label: 'Select status', value: null },
-    { label: 'Online', value: 'Online' },
-    { label: 'Offline', value: 'Offline' }
+    { label: 'Online', value: Printer.statuses.ONLINE },
+    { label: 'Offline', value: Printer.statuses.OFFLINE }
+  ];
+
+  TYPES: Array<any> = [
+    { label: 'Select type', value: null },
+    { label: 'Needle', value: Printer.types.NEEDLE },
+    { label: 'Ink Jet', value: Printer.types.INKJET },
+    { label: 'Laser', value: Printer.types.LASER }
   ];
 
   constructor(private fb: FormBuilder,
@@ -43,6 +50,7 @@ export class PrinterViewComponent implements OnInit {
       ipAddress: ['', Validators.required],
       color: ['', Validators.required],
       description: '',
+      type: ['', Validators.required]
     });
   }
 

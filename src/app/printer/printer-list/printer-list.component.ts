@@ -56,6 +56,10 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
           title: 'Status'
         },
         {
+          data: 'type',
+          title: 'Type'
+        },
+        {
           data: 'ipAddress',
           title: 'Network address'
         },

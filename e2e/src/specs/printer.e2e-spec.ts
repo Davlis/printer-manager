@@ -23,6 +23,8 @@ describe('Printer', () => {
         btn.click();
         const name = viewPage.getNameInput();
         name.sendKeys(PRINTER.name);
+        viewPage.getTypeInput();
+        viewPage.clickNeedleOpt();
         viewPage.getStatusInput();
         viewPage.clickOnlineOpt();
         const network = viewPage.getNetworkInput();
