@@ -2,6 +2,7 @@
     "id": "20f69ef5-66df-4735-9602-b3922ae99570",
     "name": "Printer #1",
     "status": "Online",
+    "type": "Laser",
     "ipAddress": "192.168.0.13",
     "description": "First printer",
     "color": "Red"
@@ -9,6 +10,7 @@
     "id": "20f69ef5-66df-4735-9602-b3922ae99579",
     "name": "Printer #2",
     "status": "Online",
+    "type": "Needle",
     "ipAddress": "192.168.0.1",
     "description": "Second printer",
     "color": "Blue"
