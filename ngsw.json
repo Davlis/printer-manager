@@ -7,12 +7,12 @@
       "installMode": "prefetch",
       "updateMode": "prefetch",
       "urls": [
-        "/printer-manager/0.aafedd5b51e0f10fb084.js",
+        "/printer-manager/0.ea6732db7f47290fc36d.js",
         "/printer-manager/favicon.ico",
         "/printer-manager/index.html",
-        "/printer-manager/main.f997a7d4d93e5d502e33.js",
+        "/printer-manager/main.bba74e052748b98bffdf.js",
         "/printer-manager/polyfills.ccf27a86274c45148758.js",
-        "/printer-manager/runtime.b0b0e80ef5cdbe422cdc.js",
+        "/printer-manager/runtime.805e1e234fd95c4c6a7b.js",
         "/printer-manager/scripts.9295ae7b359fcdcf683c.js",
         "/printer-manager/styles.b73cd76d9070acc117dc.css"
       ],
@@ -38,7 +38,7 @@
   ],
   "dataGroups": [],
   "hashTable": {
-    "/printer-manager/0.aafedd5b51e0f10fb084.js": "6b7e3e26fdc09df019907baf7966327ece5356d1",
+    "/printer-manager/0.ea6732db7f47290fc36d.js": "53ca8fc1e57304bcd54f0ec6829643b9a5ced1bb",
     "/printer-manager/assets/data/printers.json": "09fa1489a3a1e766f0c682c1e22108a6b8cd254d",
     "/printer-manager/assets/icons/icon-128x128.png": "dae3b6ed49bdaf4327b92531d4b5b4a5d30c7532",
     "/printer-manager/assets/icons/icon-144x144.png": "b0bd89982e08f9bd2b642928f5391915b74799a7",
@@ -49,10 +49,10 @@
     "/printer-manager/assets/icons/icon-72x72.png": "c457e56089a36952cd67156f9996bc4ce54a5ed9",
     "/printer-manager/assets/icons/icon-96x96.png": "3914125a4b445bf111c5627875fc190f560daa41",
     "/printer-manager/favicon.ico": "84161b857f5c547e3699ddfbffc6d8d737542e01",
-    "/printer-manager/index.html": "681801ff21c591db6f02f57836368986d883d139",
-    "/printer-manager/main.f997a7d4d93e5d502e33.js": "ff1974aacd51bdf62a4338713233bfa038c0daf7",
+    "/printer-manager/index.html": "157ab1ae111553e5df37ccfd7b993f92dee344d1",
+    "/printer-manager/main.bba74e052748b98bffdf.js": "ff1974aacd51bdf62a4338713233bfa038c0daf7",
     "/printer-manager/polyfills.ccf27a86274c45148758.js": "9dac770242889d30a7aa9f59d386bc1bc722e585",
-    "/printer-manager/runtime.b0b0e80ef5cdbe422cdc.js": "5c68180b4cb52108d1971f069712afe6ddaf68a8",
+    "/printer-manager/runtime.805e1e234fd95c4c6a7b.js": "84b96ccfc22e0ebb944be84848b494b53192b5b7",
     "/printer-manager/scripts.9295ae7b359fcdcf683c.js": "9a89c8f8ccf4e0405c51e5d708c9bb7b29bb06c3",
     "/printer-manager/styles.b73cd76d9070acc117dc.css": "29aff58056f67dedf65fe3193a9bb23f1b15ac80"
   },
