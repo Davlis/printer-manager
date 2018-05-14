@@ -5,7 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 
-import { PrinterService, Printer, STATUS } from '../../+core';
+import { PrinterService, Printer } from '../../+core';
 import { PrinterViewComponent } from './printer-view.component';
 
 describe('PrinterViewComponent', () => {
@@ -36,7 +36,8 @@ describe('PrinterViewComponent', () => {
         it('should add printer to global printers array in Printer service', () => {
             const printer = {
                 name: 'Printerr',
-                status: STATUS.ONLINE,
+                type: Printer.types.LASER,
+                status: Printer.statuses.ONLINE,
                 ipAddress: '192.168.0.13',
                 color: 'Red',
                 description: 'My description'

@@ -1,7 +1,7 @@
 import { TestBed, inject } from '@angular/core/testing';
 
 import { PrinterService } from './printer.service';
-import { STATUS, Printer } from '../../models';
+import { Printer } from '../../models';
 
 describe('PrinterService', () => {
   beforeEach(() => {
@@ -19,7 +19,8 @@ describe('PrinterService', () => {
       service.printers = [];
       const printer = {
         name: 'Printerr',
-        status: STATUS.ONLINE,
+        type: Printer.types.LASER,
+        status: Printer.statuses.ONLINE,
         ipAddress: '192.168.0.13',
         color: 'Red',
         description: 'My description'
