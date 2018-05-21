@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
 
-import { Observable } from 'rxjs';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 import { Printer } from '../../models';
 import { print } from 'util';
@@ -15,16 +15,14 @@ export class PrinterService {
   @LocalStorage()
   printers: Printer[];
 
-  observer;
-  printerObservable: Observable<Printer[]> = new Observable((observer) => {
-    this.observer = observer;
-    this.observer.next(this.printers);
-  });
+  printersSubject: BehaviorSubject<Printer[]> = new BehaviorSubject([]);
+  printers$ = this.printersSubject.asObservable();
 
   constructor() {
     if (!this.printers) {
       this.printers = [];
     }
+    this.propagateChanges();
   }
 
   public getPrintersRef() {
@@ -62,7 +60,7 @@ export class PrinterService {
   }
 
   public propagateChanges() {
-    this.observer.next(this.printers);
+    this.printersSubject.next(this.printers);
   }
 
   public async import(data) {
