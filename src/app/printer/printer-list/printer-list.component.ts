@@ -1,9 +1,10 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, AfterViewInit, ViewChild } from '@angular/core';
 import { DataTableDirective } from 'angular-datatables';
 import { Router, ActivatedRoute } from '@angular/router';
 
 import { Printer, PrinterService } from '../../+core';
 import { readJSON, extractFileFromDOMEvent } from '../../+core/helpers';
+import { Subscribable } from 'rxjs';
 
 declare var $;
 
@@ -11,9 +12,11 @@ declare var $;
   selector: 'app-printer-list',
   templateUrl: 'printer-list.component.html'
 })
-export class PrinterListComponent implements OnInit, AfterViewInit {
+export class PrinterListComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild(DataTableDirective)
   dtElement: DataTableDirective;
+
+  printerSub = null;
 
   printers: Printer[];
 
@@ -30,8 +33,10 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.printers = this.printerService.getPrintersRef();
-    this.addDataToRowsAndRedraw(this.printers);
+    this.printerSub = this.printerService.printerObservable.subscribe((v) => {
+      this.printers = v;
+      this.addDataToRowsAndRedraw(this.printers);
+    });
     this.registerOnSelect();
     this.registerOnDeselect();
   }
@@ -156,6 +161,7 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   private async registerOnSelect() {
     const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
     dtInstance.on('select', (...args) => {
+      console.log(args[3]);
       this.selected = this.printers[args[3]];
     });
   }
@@ -163,5 +169,11 @@ export class PrinterListComponent implements OnInit, AfterViewInit {
   private async registerOnDeselect() {
     const dtInstance: DataTables.Api = await this.dtElement.dtInstance;
     dtInstance.on('deselect', () => this.selected = null);
+  }
+
+  ngOnDestroy() {
+    if (this.printerSub) {
+      this.printerSub.unsubscribe();
+    }
   }
 }

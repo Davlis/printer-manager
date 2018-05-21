@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { LocalStorage } from 'ngx-webstorage';
 
+import { Observable } from 'rxjs';
+
 import { Printer } from '../../models';
 import { print } from 'util';
 
@@ -12,6 +14,12 @@ declare var $;
 export class PrinterService {
   @LocalStorage()
   printers: Printer[];
+
+  observer;
+  printerObservable: Observable<Printer[]> = new Observable((observer) => {
+    this.observer = observer;
+    this.observer.next(this.printers);
+  });
 
   constructor() {
     if (!this.printers) {
@@ -34,6 +42,7 @@ export class PrinterService {
   public add(data) {
     const printer = new Printer(data);
     this.printers = [...this.printers].concat(printer);
+    this.propagateChanges();
     return printer;
   }
 
@@ -42,16 +51,23 @@ export class PrinterService {
     printer.id = id;
     this.printers = this.printers.filter(p => p.id !== id);
     this.printers = [...this.printers].concat(printer);
+    this.propagateChanges();
     return printer;
   }
 
   public remove(id) {
     this.printers = this.printers.filter(p => p.id !== id);
+    this.propagateChanges();
     return;
+  }
+
+  public propagateChanges() {
+    this.observer.next(this.printers);
   }
 
   public async import(data) {
     this.printers = [].concat(data);
+    this.propagateChanges();
     return this.printers;
   }
 
